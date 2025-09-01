@@ -22,7 +22,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative h-[90vh] w-full overflow-hidden">
+    <section className="relative h-[90vh] w-full overflow-hidden pb-10 sm:pb-10">
       {/* Background slideshow */}
       <div className="absolute inset-0">
         <AnimatePresence mode="wait">
@@ -72,7 +72,7 @@ export const Hero = () => {
 
             {/* Right side: features */}
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg max-w-md mx-auto lg:mx-0">
-              <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">
+              <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">
                 Our Services
               </h3>
               <div className="flex flex-col gap-3 text-sm sm:text-base text-white">
