@@ -77,7 +77,7 @@ export const Services = () => {
               <img
                 src={serviceImage}
                 alt="Services illustration"
-                className="rounded-xl w-full h-auto object-cover"
+                className="rounded-xl w-full h-full object-cover"
               />
             </div>
           </div>
