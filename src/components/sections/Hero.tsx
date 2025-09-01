@@ -22,7 +22,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative h-[90vh] w-full overflow-hidden pb-10 sm:pb-10">
+    <section className="relative h-auto w-full overflow-hidden py-20 sm:pb-10">
       {/* Background slideshow */}
       <div className="absolute inset-0">
         <AnimatePresence mode="wait">
