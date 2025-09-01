@@ -7,6 +7,7 @@ import partner from "../../assets/partner.svg"
 import excellence from "../../assets/excellence.svg"
 import integrity from "../../assets/integrity.svg"
 import { ExpertCard } from "../shared/ExpertCard";
+import { Mission } from "../shared/Mission";
 
 export const About = () => {
 
@@ -82,13 +83,14 @@ export const About = () => {
           </h3>
                 
                 {/* Grid container for ExpertCard components */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 p-5">
             {expertItems.map((item, key) => (
-              <ExpertCard 
+              <Mission 
                 key={key}
                 title={item.title}
                 text={item.text}
                 icon={item.icon}
+                className="justify-start items-start"
               />
             ))}
           </div>
@@ -100,7 +102,7 @@ export const About = () => {
           </h3>
                 
                 {/* Grid container for ExpertCard components */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6 p-5">
             {valueItems.map((item, key) => (
               <ExpertCard 
                 key={key}
