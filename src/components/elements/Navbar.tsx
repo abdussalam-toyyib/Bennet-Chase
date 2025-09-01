@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 
 import { Logo } from "../../utils/Logo"
@@ -19,11 +19,31 @@ const navItems = [
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false)
+  const menuRef = useRef<HTMLDivElement>(null)
+
+  // Close menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpen(false)
+      }
+    }
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside)
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [open])
 
   return (
     <header className="bg-[#FFFFFF] sticky z-[100] top-0 py-6 shadow-xl">
       <Container>
-        <nav className="w-full relative">
+        <nav className="w-full relative" ref={menuRef}>
           {/* Top row: logo + (desktop links & CTA) + mobile toggle */}
           <div className="flex items-center justify-between gap-4">
             {/* Logo (always visible) */}
@@ -56,7 +76,7 @@ export const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile dropdown panel (separate from desktop DOM) */}
+          {/* Mobile dropdown panel */}
           <div
             id="mobile-nav"
             className={`lg:hidden absolute left-0 top-full w-full bg-white border-t border-box-border 
@@ -65,10 +85,12 @@ export const Navbar = () => {
           >
             <ul className="px-6 pt-6 pb-4 flex flex-col gap-y-4 text-lg text-heading-2">
               {navItems.map((item, key) => (
-                <NavItem href={item.href} name={item.name} key={key} />
+                <li key={key} onClick={() => setOpen(false)}>
+                  <NavItem href={item.href} name={item.name} />
+                </li>
               ))}
             </ul>
-            <div className="px-4 pb-6 border-box-border">
+            <div className="px-4 pb-6 border-box-border" onClick={() => setOpen(false)}>
               <BottonLink text="Book a Consultation" href="#cta" />
             </div>
           </div>
