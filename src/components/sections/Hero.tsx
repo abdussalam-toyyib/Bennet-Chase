@@ -73,7 +73,7 @@ export const Hero = () => {
             {/* Right side: features */}
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl shadow-lg max-w-md mx-auto lg:mx-0">
               <h3 className="text-lg sm:text-xl font-semibold text-white mb-3">
-                Our Services
+                Our Services at a Glance
               </h3>
               <div className="flex flex-col gap-3 text-sm sm:text-base text-white">
                 {[
